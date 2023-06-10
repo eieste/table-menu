@@ -1,8 +1,8 @@
 import logging
 
-from tm.menu.base.generic_item import MenuItem
 from tm.menu.base.menu_list import MenuListItem
 from tm.menu.brightness_menu import BrightnessMenuItem
+from tm.menu.mama import MamaMenuItem
 from tm.menu.memory_menu import MemoryMenuItem
 from tm.menu.metric_height_menu import MetricHeightMenuItem
 from tm.menu.table_height_menu import TableHeightMenuItem
@@ -19,11 +19,7 @@ class MainMenu(MenuListItem):
             MemoryMenuItem(parent=self),
             MetricHeightMenuItem(parent=self),
             TableHeightMenuItem(parent=self),
-            MenuItem(parent=self, title="a"),
-            MenuItem(parent=self, title="b"),
-            MenuItem(parent=self, title="c"),
-            MenuItem(parent=self, title="d"),
-            MenuItem(parent=self, title="e")
+            MamaMenuItem(parent=self)
         ]
         kwargs["title"] = "TableMenu"
         kwargs["parent"] = self

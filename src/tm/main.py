@@ -4,13 +4,13 @@ import time
 
 from luma.core.interface.serial import i2c
 from luma.core.render import canvas
-from luma.emulator.device import pygame
 from luma.oled.device import sh1106
 
+from tm.config import settings
 from tm.ctl.gpio import setup_gpio
 from tm.ctl.input import setup_input
 from tm.menu.menu_manager import MenuManager
-
+import _thread
 log = logging.getLogger()
 
 
@@ -40,13 +40,16 @@ def start(options):
     menu_manager = MenuManager(options)
 
     if options.emulator:
+        from luma.emulator.device import pygame
         device = pygame()
         setup_input(menu_manager)
+        # simulate_height_sensor()
     else:
-        serial = i2c(port=1, address=0x3C)
+        serial = i2c(port=settings.I2C_DISPLAY_PORT, address=settings.I2C_DISPLAY_ID)
+        #         SSD1306, SSD1309, SSD1322, SSD1325, SSD1327, SSD1331, SSD1351, SSD1362 and SH1106
         device = sh1106(serial)
-        setup_gpio(menu_manager)
-
+        _thread.start_new_thread(setup_gpio, (menu_manager,))
+        # setup_height_sensor()
     while True:
         with canvas(device) as draw:
             menu_manager.draw(draw, device)

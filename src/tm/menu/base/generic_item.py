@@ -44,4 +44,4 @@ class MenuItem:
             draw.rectangle(rec, fill="white")
             draw.text(Position(2, line_y), self.title(), **default_text(), fill="black")
         else:
-            draw.text(Position(2, line_y), self.title(), **default_text())
+            draw.text(Position(2, line_y), self.title(), **default_text(), fill="white")

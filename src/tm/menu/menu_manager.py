@@ -59,6 +59,7 @@ class MenuManager:
     def draw(self, draw, device):
         if self.options.fps:
             self.draw_fps(draw, device)
+            log.debug(f"FPS: {self._current_fps}")
             draw.text(Position(device.bounding_box[2] - 20, device.bounding_box[3] - settings.FONT_SIZE),
                       f"{self._current_fps}",
                       **default_text())

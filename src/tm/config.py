@@ -8,7 +8,11 @@ class Configuration:
     ROTARY_PIN_DT = 31
     ROTARY_PIN_SW = 33
 
-    IC2_DISPLAY_ID = 0x3c
+    ULTRASONIC_TRIGGER = 23
+    ULTRASONIC_ECHO = 24
+
+    I2C_DISPLAY_ID = 0x3c
+    I2C_DISPLAY_PORT = 1
 
     PATH_TO_FONT = "assets/RobotoMono-VariableFont_wght.ttf"
     FONT_SIZE = 12
